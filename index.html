@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Interactiva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+        }
+    </style>
+     <link rel="stylesheet" href="/script.js"/>
+</head>
+<body>
+    <h1>Calculadora Interactiva</h1>
+    <p>Ingrese dos números y seleccione una operación.</p>
+    
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2"><br>
+    
+    <button onclick="calculate('sum')">Sumar</button>
+    <button onclick="calculate('subtract')">Restar</button>
+    <button onclick="calculate('multiply')">Multiplicar</button>
+    <button onclick="calculate('divide')">Dividir</button>
+    <p id="result"></p>
+
+    <script src="/JS/script.js"></script>
+
+    <a href="/pages/calculadorakilometros.html">Calculadora de kilómetros</a>
+</body>
+</html>
