@@ -3,24 +3,26 @@ function calculate(operation) {
     const num2 = parseFloat(document.getElementById("num2").value);
     let result;
     
-    if (operation === 'sum') {
-        result = num1 + num2;
-    } else if (operation === 'subtract') {
-        result = num1 - num2;
-    } else if (operation === 'multiply') {
-        result = num1 * num2;
-    } else if (operation === 'divide') {
-        if (num2 !== 0) {
-            result = num1 / num2;
-        } else {
-            result = "Error: División por cero no permitida.";
+    if (isNaN(num1) || isNaN(num2)) {
+        result = "Por favor, ingrese números válidos.";
+    } else {
+        if (operation === 'sum') {
+            result = num1 + num2;
+        } else if (operation === 'subtract') {
+            result = num1 - num2;
+        } else if (operation === 'multiply') {
+            result = num1 * num2;
+        } else if (operation === 'divide') {
+            if (num2 !== 0) {
+                result = num1 / num2;
+            } else {
+                result = "Error: División por cero no permitida.";
+            }
         }
     }
     
-    document.getElementById("result").textContent = `Resultado: ${result}`;
+    document.getElementById("calc-result").textContent = `Resultado: ${result}`;
 }
-
-
 
 function convertToKilometers() {
     const distance = parseFloat(document.getElementById("distance").value);
@@ -30,7 +32,6 @@ function convertToKilometers() {
     if (isNaN(distance)) {
         result = "Por favor, ingrese un número válido.";
     } else {
-        // Condicional para determinar la conversión
         if (unit === 'miles') {
             result = distance * 1.60934; // 1 milla = 1.60934 km
         } else if (unit === 'meters') {
@@ -42,13 +43,11 @@ function convertToKilometers() {
         result = `Resultado: ${result.toFixed(4)} km`;
     }
     
-    document.getElementById("result").textContent = result;
+    document.getElementById("conv-result").textContent = result;
 }
 
 function saludar() {
-    
     let nombre = prompt("¿Cuál es tu nombre?");
-
     if (nombre) {
         alert("Hola, " + nombre + "! Encantado de conocerte.");
     } else {

@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Calculadora Interactiva</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            margin: 5px;
-        }
-    </style>
-     <link rel="stylesheet" href="/script.js"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora y Conversor</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>Calculadora Interactiva</h1>
-    <p>Ingrese dos números y seleccione una operación.</p>
-    
-    <input type="number" id="num1" placeholder="Número 1">
-    <input type="number" id="num2" placeholder="Número 2"><br>
-    
+    <h1>Calculadora</h1>
+    <label for="num1">Número 1:</label>
+    <input type="text" id="num1">
+    <br>
+    <label for="num2">Número 2:</label>
+    <input type="text" id="num2">
+    <br>
     <button onclick="calculate('sum')">Sumar</button>
     <button onclick="calculate('subtract')">Restar</button>
     <button onclick="calculate('multiply')">Multiplicar</button>
     <button onclick="calculate('divide')">Dividir</button>
-    <p id="result"></p>
-
-    <script src="/JS/script.js"></script>
-
-    <a href="/pages/calculadorakilometros.html">Calculadora de kilómetros</a>
+    <p id="calc-result">Resultado: </p>
+    
+    <h1>Conversor de Distancias</h1>
+    <label for="distance">Distancia:</label>
+    <input type="text" id="distance">
+    <br>
+    <label for="unit">Unidad:</label>
+    <select id="unit">
+        <option value="miles">Millas</option>
+        <option value="meters">Metros</option>
+        <option value="feet">Pies</option>
+    </select>
+    <br>
+    <button onclick="convertToKilometers()">Convertir a Kilómetros</button>
+    <p id="conv-result">Resultado: </p>
 </body>
 </html>
