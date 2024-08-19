@@ -1,3 +1,6 @@
+let calculationHistory = [];
+let conversionHistory = [];
+
 function calculate(operation) {
     const num1 = parseFloat(document.getElementById("num1").value);
     const num2 = parseFloat(document.getElementById("num2").value);
@@ -19,9 +22,11 @@ function calculate(operation) {
                 result = "Error: División por cero no permitida.";
             }
         }
+        calculationHistory.push(`Operación: ${operation}, Resultado: ${result}`);
     }
     
     document.getElementById("calc-result").textContent = `Resultado: ${result}`;
+    updateCalculationHistory();
 }
 
 function convertToKilometers() {
@@ -41,9 +46,11 @@ function convertToKilometers() {
         }
         
         result = `Resultado: ${result.toFixed(4)} km`;
+        conversionHistory.push(`Conversión: ${distance} ${unit}, Resultado: ${result}`);
     }
     
     document.getElementById("conv-result").textContent = result;
+    updateConversionHistory();
 }
 
 function saludar() {
@@ -53,6 +60,16 @@ function saludar() {
     } else {
         alert("Hola! Encantado de conocerte.");
     }
+}
+
+function updateCalculationHistory() {
+    const historyElement = document.getElementById("calc-history");
+    historyElement.innerHTML = calculationHistory.map(item => `<li>${item}</li>`).join('');
+}
+
+function updateConversionHistory() {
+    const historyElement = document.getElementById("conv-history");
+    historyElement.innerHTML = conversionHistory.map(item => `<li>${item}</li>`).join('');
 }
 
 saludar();
