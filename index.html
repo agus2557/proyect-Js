@@ -15,10 +15,10 @@
     <label for="num2">Número 2:</label>
     <input type="text" id="num2">
     <br>
-    <button onclick="calculate('sum')">Sumar</button>
-    <button onclick="calculate('subtract')">Restar</button>
-    <button onclick="calculate('multiply')">Multiplicar</button>
-    <button onclick="calculate('divide')">Dividir</button>
+    <button id="sumBtn">Sumar</button>
+    <button id="subtractBtn">Restar</button>
+    <button id="multiplyBtn">Multiplicar</button>
+    <button id="divideBtn">Dividir</button>
     <p id="calc-result">Resultado: </p>
     <h3>Historial de Cálculos</h3>
     <ul id="calc-history"></ul>
@@ -34,9 +34,26 @@
         <option value="feet">Pies</option>
     </select>
     <br>
-    <button onclick="convertToKilometers()">Convertir a Kilómetros</button>
+    <button id="convertBtn">Convertir a Kilómetros</button>
     <p id="conv-result">Resultado: </p>
     <h3>Historial de Conversiones</h3>
     <ul id="conv-history"></ul>
+
+    <!-- Modal de Entrada de Nombre -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2>¿Cuál es tu nombre?</h2>
+            <input type="text" id="nameInput" class="input-field">
+            <button id="submitName">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Saludo -->
+    <div id="greetModal" class="modal">
+        <div class="modal-content">
+            <p id="greetMessage"></p>
+            <button id="closeGreet">Cerrar</button>
+        </div>
+    </div>
 </body>
 </html>
