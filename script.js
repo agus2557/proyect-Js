@@ -28,6 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("submitName").addEventListener("click", submitName);
     document.getElementById("closeGreet").addEventListener("click", closeGreetModal);
 
+    // Cargar datos desde un JSON local usando fetch
+    fetch('datos.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Datos iniciales cargados:', data);
+            // Desestructuración para asignar valores iniciales
+            const { num1, num2, distance, unit } = data.initialData;
+            document.getElementById("num1").value = num1;
+            document.getElementById("num2").value = num2;
+            document.getElementById("distance").value = distance;
+            document.getElementById("unit").value = unit;
+        })
+        .catch(error => console.error('Error al cargar el JSON:', error));
+
     function calculate(operation) {
         // Desestructuración para obtener los valores directamente
         const num1 = parseFloat(document.getElementById("num1").value);
@@ -41,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             : operation === 'multiply' ? num1 * num2
             : num2 !== 0 ? num1 / num2 : "Error: División por cero no permitida.";
 
-        // Uso de spread y desestructuración para actualizar historial
-        calculationHistory = [...calculationHistory, `Operación: ${operation}, Resultado: ${result}`];
+        // Uso de Lodash para agregar el cálculo al historial
+        calculationHistory = _.concat(calculationHistory, `Operación: ${operation}, Resultado: ${result}`);
         localStorage.setItem('calculationHistory', JSON.stringify(calculationHistory));
 
         document.getElementById("calc-result").textContent = `Resultado: ${result}`;
@@ -53,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = parseFloat(document.getElementById("distance").value);
         const unit = document.getElementById("unit").value;
 
-        // Uso de operador ternario para simplificar el switch
         const factor = unit === 'miles' ? 1.60934
             : unit === 'meters' ? 0.001
             : unit === 'feet' ? 0.0003048
@@ -63,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ? "Por favor, ingrese un número válido."
             : `Resultado: ${(distance * factor).toFixed(4)} km`;
 
-        conversionHistory = [...conversionHistory, `Conversión: ${distance} ${unit}, Resultado: ${result}`];
+        // Uso de Lodash para agregar la conversión al historial
+        conversionHistory = _.concat(conversionHistory, `Conversión: ${distance} ${unit}, Resultado: ${result}`);
         localStorage.setItem('conversionHistory', JSON.stringify(conversionHistory));
 
         document.getElementById("conv-result").textContent = result;
